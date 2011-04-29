@@ -41,6 +41,15 @@ class FloatNotesTest < Test::Unit::TestCase
       assert_equal 40, t.h
     end
 
+    should "be able to get urls" do
+      Note.create(note_params.merge(:url => "helloworld"))
+      Note.create(note_params.merge(:url => "wow"))
+
+      get "/urls.json"
+      assert_status(200)
+      t = json_response
+      assert t
+    end
   end
 
   def note_params

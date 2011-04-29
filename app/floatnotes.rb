@@ -42,6 +42,11 @@ class FloatNotes < Sinatra::Base
       status("422")
     end
   end
+
+  get "/urls.json" do
+    urls = Note.distinct(:url).select(:url)
+    urls.to_json
+  end
 end
 
 
