@@ -30,7 +30,7 @@ class FloatNotes < Sinatra::Base
   end
 
   get "/notes.json" do
-    notes = Note.search_by_field(params)
+    notes = Note.search_by_field(params) || []
     notes.to_json
   end
 
@@ -58,6 +58,11 @@ class FloatNotes < Sinatra::Base
   get "/urls.json" do
     urls = Note.distinct(:url).select(:url)
     urls.to_json
+  end
+
+  get '/guids.json' do
+    guids = Note.distinct(:guid).select(:guid)
+    guids.to_json
   end
 end
 

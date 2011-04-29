@@ -32,6 +32,13 @@ class FloatNotesTest < Test::Unit::TestCase
       assert_equal 40, t.h
     end
 
+    should "return empty list of no note by guid is found" do
+      get "/notes.json?guid=helloworld"
+      assert_status(200)
+      t = json_response
+      assert t.empty?
+    end
+
     should "be able to search note by url" do
       note = Note.create(note_params.merge(:url => "helloworld"))
       get "/notes.json?url=helloworld"
