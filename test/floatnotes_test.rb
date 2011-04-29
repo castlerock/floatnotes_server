@@ -50,6 +50,16 @@ class FloatNotesTest < Test::Unit::TestCase
       t = json_response
       assert t
     end
+
+    should "be able to update note" do
+      note = Note.create(note_params.merge(:url => "helloworld"))
+      put "/notes/#{note.id}.json", note_params.merge(:content => "world_sucks")
+      assert_status(200)
+      t = json_response
+      assert t
+      assert_equal 'world_sucks', t.content
+    end
+    
   end
 
   def note_params

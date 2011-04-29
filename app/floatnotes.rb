@@ -43,6 +43,18 @@ class FloatNotes < Sinatra::Base
     end
   end
 
+  put '/notes/:id.json' do
+    note = Note.find(:id => params[:id])
+    params.delete('id')
+    note.set(params)
+    if note.save
+      status(200)
+      note.to_json
+    else
+      status(422)
+    end
+  end
+
   get "/urls.json" do
     urls = Note.distinct(:url).select(:url)
     urls.to_json
