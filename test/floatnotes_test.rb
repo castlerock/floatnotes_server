@@ -10,6 +10,7 @@ class FloatNotesTest < Test::Unit::TestCase
   context "Creating new notes with valid values" do
     should "save note" do
       post "/notes.json", note_params
+      p last_response.body
       p last_response.status
     end
   end
@@ -23,7 +24,7 @@ class FloatNotesTest < Test::Unit::TestCase
       :w => 200,
       :x => 40,
       :y => 100,
-      :status => "active",
+      :status => "1",
       :color => "yellow",
       :guid => "barbar"
     }
