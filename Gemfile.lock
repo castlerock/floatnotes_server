@@ -3,10 +3,12 @@ GEM
   specs:
     json (1.5.1)
     mocha (0.9.12)
+    mysql (2.8.1)
     rack (1.2.2)
     rack-test (0.5.7)
       rack (>= 1.0)
     rake (0.8.7)
+    sequel (3.22.0)
     shoulda (2.11.3)
     sinatra (1.2.3)
       rack (~> 1.1)
@@ -19,7 +21,9 @@ PLATFORMS
 DEPENDENCIES
   json
   mocha
+  mysql
   rack-test
   rake
+  sequel
   shoulda
   sinatra
