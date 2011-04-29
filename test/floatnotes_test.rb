@@ -10,8 +10,12 @@ class FloatNotesTest < Test::Unit::TestCase
   context "Creating new notes with valid values" do
     should "save note" do
       post "/notes.json", note_params
-      p last_response.body
-      p last_response.status
+      assert_status(201)
+    end
+    
+    should "have all the notes" do
+      get "/notes.json"
+      assert_status(200)
     end
   end
 

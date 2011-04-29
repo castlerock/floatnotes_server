@@ -28,7 +28,11 @@ class FloatNotes < Sinatra::Base
     else
       status("422")
     end
+  end
 
+  get "/notes.json" do
+    notes = Note.all
+    notes.to_json
   end
 
 end

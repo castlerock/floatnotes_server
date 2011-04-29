@@ -7,3 +7,4 @@ class Note < Sequel::Model
   end
 end
 
+Note.plugin :json_serializer
