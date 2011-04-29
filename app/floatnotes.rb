@@ -19,7 +19,6 @@ class FloatNotes < Sinatra::Base
     "Hello World"
   end
   
-
   post "/notes.json" do
     note = Note.new(params)
     if note.save
@@ -31,10 +30,18 @@ class FloatNotes < Sinatra::Base
   end
 
   get "/notes.json" do
-    notes = Note.all
+    notes = Note.search_by_field(params)
     notes.to_json
   end
 
+  delete '/notes/:id.json' do |note_id|
+    note = Note.find(:id => note_id)
+    if note && note.delete
+      status("200")
+    else
+      status("422")
+    end
+  end
 end
 
 

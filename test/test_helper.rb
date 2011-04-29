@@ -18,4 +18,8 @@ class Test::Unit::TestCase
   def assert_status(status)
     assert_equal status, last_response.status
   end
+
+  def teardown
+    Note.truncate
+  end
 end
