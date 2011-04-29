@@ -9,7 +9,7 @@ class FloatNotesTest < Test::Unit::TestCase
   
   context "Creating new notes with valid values" do
     should "save note" do
-      post "/notes.json", note_params
+      post "/notes.json", note_params.to_json
       note = Note.find(:url => "http://www.google.com")
       assert note
       assert_status(201)
@@ -60,7 +60,8 @@ class FloatNotesTest < Test::Unit::TestCase
 
     should "be able to update note" do
       note = Note.create(note_params.merge(:url => "helloworld"))
-      put "/notes/#{note.id}.json", note_params.merge(:content => "world_sucks")
+      put "/notes/#{note.id}.json", note_params.merge(:content => "world_sucks").to_json
+
       assert_status(200)
       t = json_response
       assert t
