@@ -7,8 +7,8 @@ Sequel.migration do
       String :content, :text => true
       String :color
       String :guid
-      Time :created_at
-      Time :updated_at
+      Time :creation_date
+      Time :modification_date
       
       Fixnum :x
       Fixnum :y
