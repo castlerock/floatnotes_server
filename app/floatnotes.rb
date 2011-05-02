@@ -21,7 +21,6 @@ class FloatNotes < Sinatra::Base
   
   post "/notes.json" do
     notes_params = JSON.parse(request.body.read)
-    p notes_params
     notes_params.delete('id')
     note = Note.new(notes_params)
     if note.save
@@ -33,6 +32,7 @@ class FloatNotes < Sinatra::Base
   end
 
   get "/notes.json" do
+    p params
     notes = Note.search_by_field(params) || []
     notes.to_json
   end
