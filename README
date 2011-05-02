@@ -1,1 +1,14 @@
-A Sinatra Server for storing floatnotes
+* A Sinatra Server for storing floatnotes
+
+* Install and run :
+  - check app/models/notes.rb and verify the DB settings
+  - Run the migrations using :
+    be sequel -m db/migrations mysql://root@localhost/floatnotes_development
+
+* Start the Sinatra Server
+  - be rackup -p 3000
+
+** On the extension part :
+   - http://localhost:3000 is hardcoded as web service end point.
+     
+    
