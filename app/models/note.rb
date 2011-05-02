@@ -4,7 +4,7 @@ class Note < Sequel::Model
   def self.search_by_field(params = {})
     if params['url'] && !params['url'].empty?
       url = params['url']
-      Note.filter("url like '#{url}%'").all
+      Note.filter("url like ?","#{url}%").all
     elsif params['guid'] && !params['guid'].empty?
       Note.find(:guid => params['guid'])
     else
